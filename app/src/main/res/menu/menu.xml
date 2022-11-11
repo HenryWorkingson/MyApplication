@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragment_notas"
+        android:icon="@drawable/ic_baseline_checklist_24"
+        android:title="CheckList" />
+    <item
+        android:id="@+id/fragment_api"
+        android:icon="@drawable/ic_baseline_api_24"
+        android:title="Api" />
+    <item
+        android:id="@+id/fragment_login"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Acount" />
+</menu>

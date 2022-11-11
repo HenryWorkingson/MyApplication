@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/fragment_login">
+
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="com.example.myapplication.login"
+        android:label="Account"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/fragment_notas"
+        android:name="com.example.myapplication.notas"
+        android:label="CheckList"
+        tools:layout="@layout/fragment_notas" >
+        <action
+            android:id="@+id/action_fragment_notas_to_addNotas"
+            app:destination="@id/addNotas"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_fragment_notas_to_detail_notas"
+            app:destination="@id/detail_notas" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_api"
+        android:name="com.example.myapplication.api"
+        android:label="Api"
+        tools:layout="@layout/fragment_api" >
+        <action
+            android:id="@+id/action_fragment_api_to_gallery"
+            app:destination="@id/gallery" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNotas"
+        android:name="com.example.myapplication.addNotas"
+        android:label="fragment_add_notas"
+        tools:layout="@layout/fragment_add_notas" />
+    <fragment
+        android:id="@+id/detail_notas"
+        android:name="com.example.myapplication.detail_notas"
+        android:label="fragment_detail_notas"
+        tools:layout="@layout/fragment_detail_notas" />
+    <fragment
+        android:id="@+id/autores"
+        android:name="com.example.myapplication.Autores"
+        android:label="fragment_autores"
+        tools:layout="@layout/fragment_autores" />
+    <fragment
+        android:id="@+id/gallery"
+        android:name="com.example.myapplication.Gallery.Gallery"
+        android:label="fragment_gallery"
+        tools:layout="@layout/fragment_gallery" />
+</navigation>
