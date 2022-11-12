@@ -48,9 +48,6 @@ public class login extends Fragment {
     private EditText username,password;
     private TextView register;
 
-
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

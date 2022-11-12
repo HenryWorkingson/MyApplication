@@ -106,10 +106,7 @@ public class notas extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //notasDatabase= Room.databaseBuilder(this.getContext(),NotasDatabase.class,"nota_database").allowMainThreadQueries().build();
-        //notasDao = notasDatabase.getNotasDao();
-        //allNotasLive=notasDao.getAllNotas();
-        //textView=getView().findViewById(R.id.textView_notas);
+
         floatingActionButton=getView().findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,9 +124,6 @@ public class notas extends Fragment {
             @Override
             public void onClick(View view) {
                 Notas notas2 = new Notas("click", "Word");
-                //notasDao.insertNotas(notas2, notas);
-                //new InsertAsyncTask(notasDao).execute(notas,notas2);
-                //new InsertAsyncTask(notasDao).execute(notas,notas2);
                 notasViewModel.insertNotas(notas2);
             }
         });
@@ -140,12 +134,6 @@ public class notas extends Fragment {
             @Override
             public void onChanged(List<Notas> notas) {
                 allNotas=notas;
-                /*StringBuilder text= new StringBuilder();
-                for (int i=0; i< notas.size();i++){
-                    Notas nota=notas.get(i);
-                    text.append(nota.getId()).append(":").append(nota.getTitulo()).append("=").append(nota.getDescripcion()).append("\n");
-                }
-                textView.setText(text.toString());*/
                 myAdapter.setAllNotas(notas);
 
                 myAdapter.notifyDataSetChanged();
@@ -162,7 +150,7 @@ public class notas extends Fragment {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 final Notas notasToDelete= allNotas.get(viewHolder.getAdapterPosition());
                 notasViewModel.deleteNotas(notasToDelete);
-                Snackbar.make(requireActivity().findViewById(R.id.recycleViewNotas),"Delete a Nota", BaseTransientBottomBar.LENGTH_INDEFINITE )
+                Snackbar.make(requireActivity().findViewById(R.id.recycleViewNotas),"Delete a Nota", BaseTransientBottomBar.LENGTH_SHORT )
                         .setAction("Deshacer", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

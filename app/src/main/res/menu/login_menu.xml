@@ -6,7 +6,11 @@
         android:icon="@drawable/ic_baseline_checklist_24"
         android:title="CheckList" />
     <item
-        android:id="@+id/fragment_login"
+        android:id="@+id/fragment_api"
+        android:icon="@drawable/ic_baseline_api_24"
+        android:title="Api" />
+    <item
+        android:id="@+id/fragment_perfil"
         android:icon="@drawable/ic_baseline_person_24"
-        android:title="Acount" />
+        android:title="Perfil" />
 </menu>

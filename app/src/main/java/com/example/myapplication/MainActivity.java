@@ -65,65 +65,29 @@ public class MainActivity extends AppCompatActivity {
         NavHostFragment navHostFragment= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.NavHostFragment);
         navController = navHostFragment.getNavController();
         AppBarConfiguration configuration = new AppBarConfiguration.Builder(bottomNav.getMenu()).build();
+
         NavigationUI.setupActionBarWithNavController(this,navController,configuration);
         NavigationUI.setupWithNavController(bottomNav,navController);
         //navController2= Navigation.findNavController(findViewById(R.id.fragment_notas));
         notasDatabase= Room.databaseBuilder(this,NotasDatabase.class,"nota_database").allowMainThreadQueries().build();
         notasDao = notasDatabase.getNotasDao();
 
-
-
-
-        //ImageView imageView = (ImageView)findViewById(R.id.imageViewApi);
-        /*
-        Glide.with(this).load(url).placeholder(R.drawable.ic_launcher_background)
-                .listener(new RequestListener<Drawable>() {
-                    @Override
-                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        return false;
-                    }
-                    @Override
-                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        return false;
-                    }
-                }).into(imageView);
-        */
-
-
-
-
-        /* Error Por aqui
-        recyclerView= findViewById(R.id.RecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-
-        */
-    }
-    /*
-    @Override
-    public void onBackPressed(){
-        super.onBackPressed();
-        NavController navController= Navigation.findNavController(findViewById(R.id.fragment_notas));
-        navController.navigateUp();
     }
 
-    */
     @Override
     public boolean onSupportNavigateUp(){
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow( findViewById(R.id.fragment_notas).getWindowToken(), 0);
+        imm.showSoftInput(findViewById(R.id.fragment_login),InputMethodManager.SHOW_FORCED);
+
         navController.navigateUp();
-        //NavController navController= navHostFragment.getNavController();
         return super.onSupportNavigateUp();
     }
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main_menu,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
-     */
+
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
