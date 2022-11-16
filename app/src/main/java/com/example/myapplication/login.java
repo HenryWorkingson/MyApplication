@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.os.Trace;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -158,5 +159,21 @@ public class login extends Fragment {
         startActivity(intent);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1000){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                task.getResult(ApiException.class);
+                getActivity().finish();
+                Intent intent = new Intent(getActivity(),AfterLogin.class);
+                intent.putExtra("google","1");
+                startActivity(intent);
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
 

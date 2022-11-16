@@ -85,23 +85,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1000){
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                task.getResult(ApiException.class);
-                finish();
-                Intent intent = new Intent(MainActivity.this,AfterLogin.class);
-                intent.putExtra("google","1");
-                startActivity(intent);
-            } catch (ApiException e) {
-                Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
 }
