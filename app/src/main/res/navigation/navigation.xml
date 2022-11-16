@@ -24,32 +24,18 @@
             app:destination="@id/detail_notas" />
     </fragment>
     <fragment
-        android:id="@+id/fragment_api"
-        android:name="com.example.myapplication.api"
-        android:label="Api"
-        tools:layout="@layout/fragment_api" >
-        <action
-            android:id="@+id/action_fragment_api_to_gallery"
-            app:destination="@id/gallery" />
-    </fragment>
-    <fragment
         android:id="@+id/addNotas"
         android:name="com.example.myapplication.addNotas"
-        android:label="fragment_add_notas"
+        android:label="Add Notas"
         tools:layout="@layout/fragment_add_notas" />
     <fragment
         android:id="@+id/detail_notas"
         android:name="com.example.myapplication.detail_notas"
-        android:label="fragment_detail_notas"
+        android:label="Detail Notas"
         tools:layout="@layout/fragment_detail_notas" />
     <fragment
         android:id="@+id/autores"
         android:name="com.example.myapplication.Autores"
-        android:label="fragment_autores"
+        android:label="Autores"
         tools:layout="@layout/fragment_autores" />
-    <fragment
-        android:id="@+id/gallery"
-        android:name="com.example.myapplication.Gallery.Gallery"
-        android:label="fragment_gallery"
-        tools:layout="@layout/fragment_gallery" />
 </navigation>

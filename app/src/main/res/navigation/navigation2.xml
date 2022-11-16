@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_fragment_api_to_gallery"
             app:destination="@id/gallery" />
+        <action
+            android:id="@+id/action_fragment_api_to_camera"
+            app:destination="@id/camera" />
     </fragment>
     <fragment
         android:id="@+id/addNotas"
@@ -35,7 +38,7 @@
     <fragment
         android:id="@+id/detail_notas"
         android:name="com.example.myapplication.detail_notas"
-        android:label="Detail notas"
+        android:label="Detail Notas"
         tools:layout="@layout/fragment_detail_notas" />
     <fragment
         android:id="@+id/autores"
@@ -52,4 +55,9 @@
         android:name="com.example.myapplication.Perfil"
         android:label="Perfil"
         tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/camera"
+        android:name="com.example.myapplication.Camera"
+        android:label="Camara"
+        tools:layout="@layout/fragment_camera" />
 </navigation>
