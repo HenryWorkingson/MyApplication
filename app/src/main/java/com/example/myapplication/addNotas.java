@@ -1,9 +1,14 @@
 package com.example.myapplication;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -81,6 +86,13 @@ public class addNotas extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("My Notification","My notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getActivity().getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
         notasViewModel = new ViewModelProvider(this).get(NotasViewModel.class);
 
         buttonSubmit = getView().findViewById(R.id.buttonSubmit);
@@ -114,14 +126,24 @@ public class addNotas extends Fragment {
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                NotificationCompat.Builder builder=new NotificationCompat.Builder(getActivity(), "My Notification");
+                builder.setContentTitle("Has creado una nota");
+                builder.setContentText(editTitulo.getText().toString().trim()+ " : "+editDescripcion.getText().toString().trim());
+                builder.setSmallIcon(R.drawable.ic_baseline_checklist_24);
+                builder.setAutoCancel(true);
+
+                NotificationManagerCompat managerCompat= NotificationManagerCompat.from(getActivity());
+                managerCompat.notify(1,builder.build());
+
+
                 String titulo = editTitulo.getText().toString().trim();
                 String descripcion = editDescripcion.getText().toString().trim();
                 Notas notas = new Notas(titulo,descripcion);
                 notasViewModel.insertNotas(notas);
-                NavController navController= Navigation.findNavController(view);
-                navController.navigateUp();
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                NavController navController= Navigation.findNavController(view);
+                navController.navigateUp();
             }
         });
     }

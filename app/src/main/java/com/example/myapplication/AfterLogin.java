@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.example.myapplication.Class.NotasDao;
@@ -39,6 +42,7 @@ public class AfterLogin extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
         notasDatabase= Room.databaseBuilder(this,NotasDatabase.class,"nota_database").allowMainThreadQueries().build();
         notasDao = notasDatabase.getNotasDao();
+
 
     }
     @Override

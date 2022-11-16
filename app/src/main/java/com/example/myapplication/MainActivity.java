@@ -12,10 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.LruCache;
 import android.view.Menu;
@@ -71,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         //navController2= Navigation.findNavController(findViewById(R.id.fragment_notas));
         notasDatabase= Room.databaseBuilder(this,NotasDatabase.class,"nota_database").allowMainThreadQueries().build();
         notasDao = notasDatabase.getNotasDao();
+
 
     }
 
