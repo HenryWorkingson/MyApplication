@@ -66,7 +66,6 @@ public class api extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(getContext(), "Has pulsado: "+ names.get(position), Toast.LENGTH_LONG).show();
                 if(names.get(position).equals("Pixabay"))
                     navController.navigate(R.id.action_fragment_api_to_gallery);
                 if(names.get(position).equals("Camera")){
