@@ -34,10 +34,10 @@ public class AfterLogin extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationViewLogin);
         NavHostFragment navHostFragment= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.NavHostFragmentLogin);
         navController = navHostFragment.getNavController();
-
         NavigationUI.setupWithNavController(bottomNav,navController);
         AppBarConfiguration appBarConfiguration =
-                new AppBarConfiguration.Builder(navController.getGraph()).build();
+                new AppBarConfiguration.Builder(bottomNav.getMenu()).build();
+
 
         NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
         notasDatabase= Room.databaseBuilder(this,NotasDatabase.class,"nota_database").allowMainThreadQueries().build();
@@ -49,6 +49,7 @@ public class AfterLogin extends AppCompatActivity {
     public boolean onSupportNavigateUp(){
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow( findViewById(R.id.fragment_notas).getWindowToken(), 0);
+
         navController.navigateUp();
         return super.onSupportNavigateUp();
     }
