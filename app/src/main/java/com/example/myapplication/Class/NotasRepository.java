@@ -33,6 +33,7 @@ public class NotasRepository {
         new DeleteAsyncTask(notasDao).execute(notas);
     }
     public void updateNotas(Notas...notas){ new UpdateAsyncTask(notasDao).execute(notas);}
+
     static class InsertAsyncTask extends AsyncTask<Notas,Void,Void> {
         private NotasDao notasDao;
         public InsertAsyncTask(NotasDao notasDao){

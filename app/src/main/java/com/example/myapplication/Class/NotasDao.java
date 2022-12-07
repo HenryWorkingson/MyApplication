@@ -19,8 +19,6 @@ public interface NotasDao  {
     void deleteAllNotas();
 
     @Query("SELECT * FROM notas_table ORDER BY id")
-    //androidx.paging.DataSource.Factory<Integer,Notas> getAllNotas();
-    //List<Notas> getAllNotas();
     LiveData<List<Notas>>getAllNotas();
 
     @Update

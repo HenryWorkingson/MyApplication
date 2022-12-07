@@ -54,8 +54,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                navController.navigate(R.id.action_fragment_notas_to_detail_notas,bundle);
            }
        });
-
-
     }
 
     @Override
