@@ -31,9 +31,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class api extends Fragment {
-
-    private ApiViewModel mViewModel;
-
     public static api newInstance() {
         return new api();
     }
@@ -51,7 +48,6 @@ public class api extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ApiViewModel.class);
         // TODO: Use the ViewModel
         listView = (ListView) getView().findViewById(R.id.listViewApi);
         names = new ArrayList<String>();

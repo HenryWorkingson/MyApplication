@@ -95,7 +95,6 @@ public class Gallery extends Fragment {
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
         requestQueue.add(jsonObjectRequest);
     }
 }
