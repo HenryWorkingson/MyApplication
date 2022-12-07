@@ -72,27 +72,12 @@ public class detail_notas extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        /*
-        view = inflater.inflate(R.layout.fragment_detail_notas, container,false);
-        editTitulo=view.findViewById(R.id.detail_nota_titulo);
-        editDescripcion=view.findViewById(R.id.detail_nota_descripcion);
-        editTitulo.setText(getArguments().getString("titulo"), TextView.BufferType.EDITABLE);
-        editDescripcion.setText(getArguments().getString("descripcion"), TextView.BufferType.EDITABLE);
-
-
-         */
         return inflater.inflate(R.layout.fragment_detail_notas, container, false);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        /*
-        editTitulo = getView().findViewById(R.id.detail_nota_titulo);
-        editDescripcion = getView().findViewById(R.id.detail_nota_descripcion);
-        editTitulo.setText(getArguments().getString("titulo"), TextView.BufferType.EDITABLE);
-        editDescripcion.setText(getArguments().getString("descripcion"), TextView.BufferType.EDITABLE);
-     */
     }
 
 

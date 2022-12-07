@@ -75,16 +75,13 @@ public class notas extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String s) {
                 String patten= s.trim();
                 filterNotas.removeObservers(getViewLifecycleOwner());
                 filterNotas=notasViewModel.findnotasWithPatten(patten);
-
                 filterNotas.observe(getViewLifecycleOwner(), new Observer<List<Notas>>() {
                     @Override
                     public void onChanged(List<Notas> notas) {
@@ -96,12 +93,10 @@ public class notas extends Fragment {
                         }
                     }
                 });
-
                 return true;
             }
         });
     }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -111,7 +106,6 @@ public class notas extends Fragment {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Bundle
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.action_fragment_notas_to_addNotas);
             }
@@ -127,7 +121,6 @@ public class notas extends Fragment {
                 notasViewModel.insertNotas(notas2);
             }
         });
-
         notasViewModel= new ViewModelProvider(this).get(NotasViewModel.class);
         filterNotas=notasViewModel.getAllNotasLive();
         filterNotas.observe(getViewLifecycleOwner(), new Observer<List<Notas>>() {
@@ -135,17 +128,14 @@ public class notas extends Fragment {
             public void onChanged(List<Notas> notas) {
                 allNotas=notas;
                 myAdapter.setAllNotas(notas);
-
                 myAdapter.notifyDataSetChanged();
             }
         });
-        //deslizamiento
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.START | ItemTouchHelper.END) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
             }
-
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 final Notas notasToDelete= allNotas.get(viewHolder.getAdapterPosition());
@@ -197,9 +187,6 @@ public class notas extends Fragment {
             }
 
         }).attachToRecyclerView(recyclerView);
-
-
-
     }
 
     @Override
@@ -207,7 +194,7 @@ public class notas extends Fragment {
         switch (item.getItemId()){
             case R.id.clearData:
                 AlertDialog.Builder builder= new AlertDialog.Builder(requireActivity());
-                builder.setTitle("clearData");
+                builder.setTitle("Clear all Data");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -217,7 +204,6 @@ public class notas extends Fragment {
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                     }
                 });
                 builder.create();
@@ -230,5 +216,4 @@ public class notas extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

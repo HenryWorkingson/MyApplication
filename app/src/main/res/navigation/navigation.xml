@@ -38,4 +38,9 @@
         android:name="com.example.myapplication.Autores"
         android:label="Autores"
         tools:layout="@layout/fragment_autores" />
+    <activity
+        android:id="@+id/register"
+        android:name="com.example.myapplication.Register"
+        android:label="activity_register"
+        tools:layout="@layout/activity_register" />
 </navigation>
